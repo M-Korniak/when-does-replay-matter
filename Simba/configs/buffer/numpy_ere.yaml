@@ -1,0 +1,12 @@
+buffer_class_type: 'numpy'   # [numpy, jax (distributed-friendly)]
+buffer_type: 'ere'           # [uniform, exponential, ere, prioritized]
+
+n_step: ${n_step}
+gamma: ${gamma}
+max_length: 1_000_000        # maximum buffer size.
+min_length: 5_000            # minimum buffer size (= number of data to collect before training).
+sample_batch_size: 16        # batch size for sampling = training.
+
+decay_const: 0.966           # ERE decay constant c (paper default: 0.966)
+min_recent_samples: 5000     # floor on how far back ERE can sample
+ere_buffer_episode: 1000     # run ERE update sweep every this many interaction steps
