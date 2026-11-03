@@ -1171,3 +1171,7 @@ body.figure-open {
 .entropy-table-img {
   padding: 10px;
 }
+
+.author sup {
+  line-height: 0;
+}
