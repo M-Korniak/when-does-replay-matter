@@ -1120,3 +1120,9 @@ body.figure-open {
     flex:1;
   }
 }
+
+.equal-contribution {
+  margin: 0 0 1rem;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
