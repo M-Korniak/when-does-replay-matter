@@ -1134,27 +1134,22 @@ body.figure-open {
 .caption-more p {
   margin: 8px 0 0;
 }
-.entropy-table-wrap {
-  margin: 0 auto 24px;
-  max-width: 560px;
-  text-align: center;
-  font-size: 0.9rem;
+.entropy-row {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 20px;
+  align-items: center;
 }
-.entropy-table {
+.entropy-table-img {
   width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 6px;
+  height: auto;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px;
 }
-.entropy-table th, .entropy-table td {
-  padding: 6px 12px;
-  text-align: right;
-}
-.entropy-table th:first-child, .entropy-table td:first-child {
-  text-align: left;
-}
-.entropy-table thead tr, .entropy-table tbody tr:last-child {
-  border-bottom: 2px solid currentColor;
-}
-.entropy-table thead tr {
-  border-top: 2px solid currentColor;
+@media (max-width: 650px) {
+  .entropy-row {
+    grid-template-columns: 1fr;
+  }
 }
