@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>When Does Non-Uniform Replay Matter in Reinforcement Learning?</title>
+  <meta name="description" content="Replay volume, expected recency and sampling entropy determine when non-uniform replay helps off-policy RL. NeurIPS 2026 Spotlight.">
+  <meta name="theme-color" content="#3070b3">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="When Does Non-Uniform Replay Matter in Reinforcement Learning?">
+  <meta property="og:description" content="Replay volume, expected recency and sampling entropy determine when non-uniform replay helps off-policy RL.">
+  <meta property="og:url" content="https://m-korniak.github.io/when-does-replay-matter/">
+  <meta name="citation_title" content="When Does Non-Uniform Replay Matter in Reinforcement Learning?">
+  <meta name="citation_author" content="Michal Korniak">
+  <meta name="citation_author" content="Mikołaj Czarnecki">
+  <meta name="citation_author" content="Yarden As">
+  <meta name="citation_author" content="Piotr Miłoś">
+  <meta name="citation_author" content="Pieter Abbeel">
+  <meta name="citation_author" content="Michal Nauman">
+  <meta name="citation_pdf_url" content="https://arxiv.org/pdf/2605.10236">
+  <link rel="canonical" href="https://m-korniak.github.io/when-does-replay-matter/">
+  <link rel="icon" type="image/svg+xml" href="static/images/favicon.svg">
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+  <script defer src="static/js/index.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<main id="main-content">
+  <section class="hero" id="top" aria-labelledby="paper-title">
+    <div class="hero-body">
+      <div class="container is-max-desktop has-text-centered">
+        <h1 class="title is-1 publication-title" id="paper-title">When Does <span>Non-Uniform Replay Matter</span> in Reinforcement Learning?</h1>
+        <p class="publication-venue">NeurIPS 2026 <span>· Spotlight</span></p>
+        <div class="publication-authors"><span class="author">Michal Korniak</span>
+<span class="author">Mikołaj Czarnecki</span>
+<span class="author">Yarden As</span>
+<span class="author">Piotr Miłoś</span>
+<span class="author">Pieter Abbeel</span>
+<span class="author">Michal Nauman</span></div>
+        <div class="publication-links">
+          <a class="button is-dark" href="https://arxiv.org/abs/2605.10236"><span aria-hidden="true">↗</span> Paper</a>
+          <a class="button is-dark" href="https://github.com/M-Korniak/when-does-replay-matter"><span aria-hidden="true">&lt;/&gt;</span> Code</a>
+          <a class="button is-dark" href="#BibTeX"><span aria-hidden="true">{ }</span> BibTeX</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section band" id="abstract" aria-labelledby="abstract-title">
+    <div class="container reading-width">
+      <h2 class="section-title" id="abstract-title">Abstract</h2>
+      <div class="content tldr-copy">
+        <p>Modern off-policy reinforcement learning algorithms often rely on simple uniform replay sampling, and it remains unclear when and why non-uniform replay improves over this strong baseline. Across diverse RL settings, we show that the effectiveness of non-uniform replay is governed by three factors: <strong>replay volume</strong>, the number of replayed transitions per environment step; <strong>expected recency</strong>, how recent sampled transitions are; and the <strong>entropy</strong> of the replay sampling distribution.</p>
+        <p>Non-uniform replay is most beneficial when replay volume is low, and high-entropy sampling is important even at comparable expected recency. Motivated by these findings, we adopt a simple <strong>Truncated Geometric</strong> replay that biases sampling toward recent experience while preserving high entropy and incurring negligible computational overhead. Across large-scale parallel simulation, single-task, and multi-task settings, including three modern algorithms evaluated on five RL benchmark suites, it improves sample efficiency in low-volume regimes while remaining competitive when replay volume is high.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="BibTeX" aria-labelledby="citation-title">
+    <div class="container reading-width">
+      <div class="bibtex-header"><h2 id="citation-title">BibTeX</h2><button class="copy-bibtex-btn" type="button">Copy citation</button></div>
+      <pre id="bibtex-code"><code>@misc{korniak2026doesnonuniformreplaymatter,
+  title = {When Does Non-Uniform Replay Matter in Reinforcement Learning?},
+  author = {Michal Korniak and
+            Mikołaj Czarnecki and
+            Yarden As and
+            Piotr Miłoś and
+            Pieter Abbeel and
+            Michal Nauman},
+  year = {2026},
+  eprint = {2605.10236},
+  archivePrefix = {arXiv},
+  primaryClass = {cs.LG},
+  url = {https://arxiv.org/abs/2605.10236}
+}</code></pre>
+      <p class="copy-status" role="status" aria-live="polite"></p>
+    </div>
+  </section>
+</main>
+<footer class="footer"><div class="container reading-width"><p>Adapted from the <a href="https://github.com/lasgroup/vla-post-training/tree/gh-pages">VLA post-training project page</a> and the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template">Academic Project Page Template</a>, originally based on <a href="https://nerfies.github.io/">Nerfies</a>.</p><p>Website template: <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.</p></div></footer>
+<a class="scroll-to-top" href="#top" aria-label="Back to top">↑</a>
+<dialog id="figure-dialog" aria-labelledby="figure-dialog-title"><div class="dialog-toolbar"><h2 id="figure-dialog-title">Figure</h2><button type="button" class="close-dialog" aria-label="Close enlarged figure">Close ×</button></div><div class="zoom-scroll"><img alt="" id="enlarged-figure"></div><p>Scroll to explore the figure. Press Escape or Close to return.</p></dialog>
+</body>
+</html>
