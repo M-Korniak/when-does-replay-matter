@@ -1175,3 +1175,10 @@ body.figure-open {
 .author sup {
   line-height: 0;
 }
+
+#overview .paper-figure,
+#three-axes .paper-figure {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
