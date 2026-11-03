@@ -62,6 +62,52 @@
     </div>
   </section>
 
+  <section class="section" id="overview" aria-labelledby="overview-title">
+    <div class="container is-max-desktop">
+      <h2 class="section-title" id="overview-title">Performance and runtime trade-offs</h2>
+      <p class="section-lead">Recency-biased replay improves sample efficiency at negligible cost</p>
+      <figure class="paper-figure"><a class="figure-link" href="static/figures/frontpage.png" data-zoom aria-label="Enlarge: Relative AUC gains over uniform replay for single-task FastTD3, multi-task BRC, and wall-clock time overhead on HumanoidBench."><img src="static/figures/frontpage.png" alt="Relative AUC gains over uniform replay for single-task FastTD3, multi-task BRC, and wall-clock time overhead on HumanoidBench." loading="lazy" decoding="async"><span class="zoom-label" aria-hidden="true">↗ Enlarge figure</span></a><figcaption><strong>Performance and runtime trade-offs on HumanoidBench.</strong> Truncated Geometric replay gives consistent sample-efficiency gains over uniform sampling with minimal overhead, while PER is much slower.<details class="caption-more"><summary>Read more</summary><p>Relative sample efficiency gains measured as area under the learning curve (AUC) for single-task (left) and multi-task BRC (middle), and wall-clock time difference aggregated across both settings (right), compared to uniform sampling. Error bars show 95% stratified bootstrap CI. We report results in large-scale parallel FastTD3 and multi-task BRC because they feature relatively low experience reuse per transition, where non-uniform replay is expected to have the greatest impact.</p></details></figcaption></figure>
+    </div>
+  </section>
+
+  <section class="section band" id="three-axes" aria-labelledby="three-axes-title">
+    <div class="container is-max-desktop">
+      <h2 class="section-title" id="three-axes-title">Three axes of replay</h2>
+      <p class="section-lead">Replay volume, expected recency and sampling entropy</p>
+      <div class="content tldr-copy"><p>Whether non-uniform replay helps is governed by three factors: <strong>replay volume</strong> (replayed transitions per environment step), <strong>expected recency</strong> (how recent the sampled transitions are) and <strong>sampling entropy</strong> (how spread out the sampling distribution is).</p></div>
+      <figure class="paper-figure"><a class="figure-link" href="static/figures/three-axes.png" data-zoom aria-label="Enlarge: Effect of expected recency, replay volume, and sampling entropy on replay sampling distributions."><img src="static/figures/three-axes.png" alt="Effect of expected recency, replay volume, and sampling entropy on replay sampling distributions." loading="lazy" decoding="async"><span class="zoom-label" aria-hidden="true">↗ Enlarge figure</span></a><figcaption><strong>Effect of expected recency, replay volume, and sampling entropy.</strong><details class="caption-more"><summary>Read more</summary><p>(Left) By biasing samples toward recent data, the Truncated Geometric sampler achieves substantially higher expected recency than uniform replay. (Middle) Increasing replay volume through UTD or batch size can make uniform replay match or exceed recency-biased sampling in the number of updates applied to recent transitions. (Right) Replay distributions can have the same expected recency but different sampling entropy. The Truncated Geometric sampler achieves recency through a smooth full-support bias, increasing sampling entropy relative to a uniform buffer with the same expected recency; this is comparable to increasing the uniform sampling buffer size by roughly one third.</p></details></figcaption></figure>
+    </div>
+  </section>
+
+  <section class="section" id="utd" aria-labelledby="utd-title">
+    <div class="container is-max-desktop">
+      <h2 class="section-title" id="utd-title">Replay volume matters</h2>
+      <p class="section-lead">Non-uniform replay helps most when replay volume is low</p>
+      <figure class="paper-figure"><a class="figure-link" href="static/figures/utd.png" data-zoom aria-label="Enlarge: Improvement of recency-biased sampling over uniform replay as replay volume is varied through UTD and batch size."><img src="static/figures/utd.png" alt="Improvement of recency-biased sampling over uniform replay as replay volume is varied through UTD and batch size." loading="lazy" decoding="async"><span class="zoom-label" aria-hidden="true">↗ Enlarge figure</span></a><figcaption><strong>Replay volume matters.</strong> The advantage of recency-biased replay shrinks as UTD (left) or batch size (right) grows.<details class="caption-more"><summary>Read more</summary><p>Improvement of recency-biased sampling over uniform replay as replay volume is varied through UTD (left) and batch size (right). In both panels, reducing replay volume increases the advantage of recency-biased replay: when replay volume is high, both methods perform similarly, whereas when replay volume is low, recency-biased sampling yields substantially larger gains. As such, the sampling distribution is especially important in optimization-limited regimes, such as multi-task learning or large-scale parallel simulation. PER follows a similar trend.</p></details></figcaption></figure>
+    </div>
+  </section>
+
+  <section class="section band" id="entropy" aria-labelledby="entropy-title">
+    <div class="container is-max-desktop">
+      <h2 class="section-title" id="entropy-title">Sampling entropy matters</h2>
+      <p class="section-lead">Expected recency alone is not enough</p>
+      <div class="content tldr-copy"><p>At matched expected recency (μ ≈ 0.85), performance tracks sampling entropy: Truncated Geometric, which has the highest entropy, performs best, while ERE, which has the lowest, falls below the uniform baseline.</p></div>
+      <div class="entropy-table-wrap"><table class="entropy-table"><thead><tr><th>Method</th><th>μ</th><th>Entropy</th><th>AUC gain</th></tr></thead><tbody>
+<tr><td>Truncated Geometric</td><td>0.85</td><td><strong>12.8</strong></td><td><strong>+12.9%</strong></td></tr>
+<tr><td>Uniform FIFO</td><td>0.85</td><td>12.61</td><td>+4.6%</td></tr>
+<tr><td>ERE</td><td>0.85</td><td>12.4</td><td>−41.4%</td></tr></tbody></table><p>AUC gain relative to Uniform (1M).</p></div>
+      <figure class="paper-figure"><a class="figure-link" href="static/figures/entropy.png" data-zoom aria-label="Enlarge: Maximum-entropy frontier for a 1M buffer: Truncated Geometric lies on the frontier, while ERE and Uniform FIFO achieve lower entropy at the same expected recency."><img src="static/figures/entropy.png" alt="Maximum-entropy frontier for a 1M buffer: Truncated Geometric lies on the frontier, while ERE and Uniform FIFO achieve lower entropy at the same expected recency." loading="lazy" decoding="async"><span class="zoom-label" aria-hidden="true">↗ Enlarge figure</span></a><figcaption><strong>Sampling entropy matters.</strong> Truncated Geometric lies on the maximum-entropy frontier.<details class="caption-more"><summary>Read more</summary><p>ERE, Uniform FIFO (300k), and Truncated Geometric are matched to the same expected recency (μ ≈ 0.85), yet AUC gain relative to the Uniform (1M) baseline differs substantially with the sampling entropy. At this μ, ERE has the lowest entropy and falls below the Uniform baseline, while Truncated Geometric, which has the highest entropy, performs best. Interestingly, Uniform FIFO (300k) also outperforms the larger Uniform baseline despite using a smaller buffer. The plot shows the maximum-entropy frontier for a 1M buffer: among all discrete replay sampling distributions with fixed expected recency, the Truncated Geometric distribution achieves the highest possible sampling entropy. The shaded region above the curve is infeasible. ERE and Uniform FIFO trace lower-entropy tradeoffs across hyperparameter settings, so they obtain recency less efficiently than Truncated Geometric.</p></details></figcaption></figure>
+    </div>
+  </section>
+
+  <section class="section" id="results" aria-labelledby="results-title">
+    <div class="container is-max-desktop">
+      <h2 class="section-title" id="results-title">Final results</h2>
+      <p class="section-lead">Truncated Geometric beats uniform, PER and ERE</p>
+      <figure class="paper-figure"><a class="figure-link" href="static/figures/results.png" data-zoom aria-label="Enlarge: Aggregate return on 29 HumanoidBench tasks with FastTD3 and 20 HumanoidBench tasks with BRC, comparing Uniform, PER, ERE and Truncated Geometric replay."><img src="static/figures/results.png" alt="Aggregate return on 29 HumanoidBench tasks with FastTD3 and 20 HumanoidBench tasks with BRC, comparing Uniform, PER, ERE and Truncated Geometric replay." loading="lazy" decoding="async"><span class="zoom-label" aria-hidden="true">↗ Enlarge figure</span></a><figcaption><strong>High-dimensional humanoid locomotion and manipulation.</strong> Truncated Geometric sampling significantly improves over uniform replay with FastTD3 (left) and BRC (right).<details class="caption-more"><summary>Read more</summary><p>Aggregate mean return across 29 HumanoidBench tasks trained in a parallel simulation setup with FastTD3 (left) and 20 HumanoidBench tasks trained in a multi-task setup with BRC (right). Shaded regions show 95% CIs. Truncated Geometric sampling significantly improves over uniform replay on both benchmarks and outperforms PER and ERE, despite FastTD3 and BRC already being strong optimized baselines. These gains come with negligible computational and complexity overhead relative to uniform sampling.</p></details></figcaption></figure>
+    </div>
+  </section>
+
   <section class="section" id="BibTeX" aria-labelledby="citation-title">
     <div class="container reading-width">
       <div class="bibtex-header"><h2 id="citation-title">BibTeX</h2><button class="copy-bibtex-btn" type="button">Copy citation</button></div>

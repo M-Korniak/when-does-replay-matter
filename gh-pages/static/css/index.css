@@ -1121,3 +1121,40 @@ body.figure-open {
   font-size: 0.9rem;
   opacity: 0.8;
 }
+
+.caption-more {
+  margin-top: 6px;
+}
+.caption-more summary {
+  cursor: pointer;
+  width: fit-content;
+  color: var(--primary);
+  font-size: 0.9em;
+}
+.caption-more p {
+  margin: 8px 0 0;
+}
+.entropy-table-wrap {
+  margin: 0 auto 24px;
+  max-width: 560px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+.entropy-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 6px;
+}
+.entropy-table th, .entropy-table td {
+  padding: 6px 12px;
+  text-align: right;
+}
+.entropy-table th:first-child, .entropy-table td:first-child {
+  text-align: left;
+}
+.entropy-table thead tr, .entropy-table tbody tr:last-child {
+  border-bottom: 2px solid currentColor;
+}
+.entropy-table thead tr {
+  border-top: 2px solid currentColor;
+}
