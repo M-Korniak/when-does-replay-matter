@@ -128,14 +128,12 @@ strong {
 }
 .affiliations ol {
   list-style:none;
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:8px 22px;
-  text-align:left;
-  margin:20px 0;
-  padding:18px 24px;
-  background:var(--light);
-  border-radius:var(--radius);
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:4px 22px;
+  margin:0;
+  padding:0;
 }
 .affiliations li {
   line-height:1.6;
@@ -664,9 +662,6 @@ body.figure-open {
   }
   .result-detail {
     gap:28px;
-  }
-  .affiliations ol {
-    grid-template-columns:repeat(2,1fr);
   }
 }
 @media(max-width:650px) {
