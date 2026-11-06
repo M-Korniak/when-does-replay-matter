@@ -7,7 +7,7 @@
   --light:#eef5f0;
   --line:#dfe8e3;
   --orange:#c96909;
-  --blue:#236a9a;
+  --blue:#4a7c59;
   --radius:12px;
 }
 html {
@@ -159,7 +159,7 @@ strong {
   padding:0 19px;
   height:42px;
   gap:9px;
-  box-shadow:0 2px 4px #15223618;
+  box-shadow:0 2px 4px #1f2a2618;
   transition:background .2s,transform .2s;
   color:white;
 }
@@ -343,7 +343,7 @@ strong {
   margin:4px 0 13px;
 }
 .task-group+.task-group {
-  border-left:1px dashed #cbd5e1;
+  border-left:1px dashed #cfdcd4;
   padding-left:23px;
 }
 .scene-grid {
@@ -373,7 +373,7 @@ strong {
   left:0;
   right:0;
   padding:5px 9px;
-  background:linear-gradient(transparent,#0f172acc);
+  background:linear-gradient(transparent,#101c16cc);
   color:#fff;
   font-size:10px;
   font-weight:600;
@@ -396,7 +396,7 @@ strong {
   transition:box-shadow .2s;
 }
 .figure-link:hover {
-  box-shadow:0 5px 20px #1e293b0d;
+  box-shadow:0 5px 20px #1f2a260d;
 }
 .figure-link img {
   width:100%;
@@ -510,7 +510,7 @@ pre {
   padding:22px;
   font-size:12px;
   line-height:1.8;
-  color:#475569;
+  color:#4d5c54;
   white-space:pre-wrap;
   overflow-wrap:anywhere;
   max-height:355px;
@@ -584,7 +584,7 @@ pre code {
   box-shadow:0 20px 80px #0003;
 }
 #figure-dialog::backdrop {
-  background:#0f172bbf;
+  background:#101c16bf;
   backdrop-filter:blur(3px);
 }
 .dialog-toolbar {
@@ -1019,7 +1019,7 @@ body.figure-open {
   margin-bottom:12px;
 }
 .rollout-toolbar button {
-  border:1px solid #cdd7e4;
+  border:1px solid #cfdcd4;
   border-radius:6px;
   padding:5px 10px;
   color:var(--ink);
@@ -1044,7 +1044,7 @@ body.figure-open {
   max-height:calc(100svh - 280px);
   margin-inline:auto;
   border-radius:7px;
-  background:#0c141d;
+  background:#101c16;
 }
 .rollout-note {
   color:var(--muted);
