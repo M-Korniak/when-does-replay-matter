@@ -1,10 +1,11 @@
 /* Adapted from the supplied academic project page; see footer for attribution. */
 :root {
-  --primary:#3070b3;
-  --ink:#1e293b;
-  --muted:#61718a;
-  --light:#f7f9fc;
-  --line:#e2e8f0;
+  --primary:#4a7c59;
+  --primary-dark:#365c42;
+  --ink:#1f2a26;
+  --muted:#66736d;
+  --light:#eef5f0;
+  --line:#dfe8e3;
   --orange:#c96909;
   --blue:#236a9a;
   --radius:12px;
@@ -26,7 +27,7 @@ a {
   text-decoration:none;
 }
 a:hover {
-  color:#154a82;
+  color:var(--primary-dark);
   text-decoration:underline;
 }
 button,a,summary {
@@ -37,7 +38,7 @@ button {
   cursor:pointer;
 }
 a:focus-visible,button:focus-visible,summary:focus-visible {
-  outline:3px solid #3070b3;
+  outline:3px solid var(--primary);
   outline-offset:5px;
 }
 strong {
@@ -150,7 +151,7 @@ strong {
   margin-top:25px;
 }
 .button.is-dark {
-  background:var(--ink);
+  background:var(--primary);
   border:0;
   border-radius:8px;
   font-size:14px;
@@ -163,7 +164,7 @@ strong {
   color:white;
 }
 .button.is-dark:hover {
-  background:var(--primary);
+  background:var(--primary-dark);
   transform:translateY(-2px);
   text-decoration:none;
 }
